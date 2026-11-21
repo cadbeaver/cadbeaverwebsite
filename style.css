@@ -955,13 +955,11 @@
                 height: 12px !important;
             }
 
-            /* Mobile Capabilities Stacking Deck (Taash ke Patte Scroll Effect) */
+            /* Mobile Capabilities Stacking Deck (Taash ke Patte Scroll Effect) - Ultra-Smooth 120Hz */
             .services-grid {
-                display: flex !important;
-                flex-direction: column !important;
-                gap: 24px !important;
+                display: block !important;
                 position: relative !important;
-                padding-bottom: 220px !important;
+                padding-bottom: 180px !important;
             }
 
             .services-grid .service-card {
@@ -971,11 +969,15 @@
                 border: 1px solid rgba(0, 0, 0, 0.08) !important;
                 border-radius: 28px !important;
                 padding: 28px 22px !important;
-                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08) !important;
+                margin-bottom: 24px !important;
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06) !important;
                 opacity: 1 !important;
-                transform: none !important;
-                will-change: auto !important;
+                transform: translateZ(0) !important;
+                -webkit-transform: translateZ(0) !important;
+                will-change: transform !important;
+                contain: paint layout !important;
                 transition: none !important;
+                -webkit-transition: none !important;
             }
 
             .services-grid .service-card.card-dark {
@@ -985,12 +987,12 @@
 
             .services-grid .service-card.scroll-3d-reveal {
                 opacity: 1 !important;
-                transform: none !important;
+                transform: translateZ(0) !important;
                 transition: none !important;
             }
 
             .services-grid .service-card:hover {
-                transform: none !important;
+                transform: translateZ(0) !important;
             }
 
             .services-grid .service-card:nth-child(1) { top: 76px !important; z-index: 10 !important; }
@@ -2044,17 +2046,19 @@
             will-change: auto;
         }
 
-        /* Smooth Card Hover Popup */
-        .service-card,
-        .project-card {
-            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease !important;
-            cursor: pointer;
-        }
+        /* Smooth Card Hover Popup (Desktop Only) */
+        @media (min-width: 969px) {
+            .service-card,
+            .project-card {
+                transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease !important;
+                cursor: pointer;
+            }
 
-        .service-card:hover,
-        .project-card:hover {
-            transform: translateY(-8px) scale(1.015) !important;
-            box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.12) !important;
+            .service-card:hover,
+            .project-card:hover {
+                transform: translateY(-8px) scale(1.015) !important;
+                box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.12) !important;
+            }
         }
 
         /* Project Card Inspect Tag in #cases-slider */

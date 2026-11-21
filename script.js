@@ -560,7 +560,11 @@
         }
 
         // 5. SMOOTH 3D SCROLL REVEAL FOR CARDS & SECTIONS
-        const revealElements = document.querySelectorAll('.service-card, .project-card, .section-header, .contact-banner');
+        const isMobileScreenDevice = window.innerWidth <= 968 || /Mobi|Android|iPhone/i.test(navigator.userAgent);
+        const revealSelector = isMobileScreenDevice
+            ? '.project-card, .section-header, .contact-banner'
+            : '.service-card, .project-card, .section-header, .contact-banner';
+        const revealElements = document.querySelectorAll(revealSelector);
         revealElements.forEach((el, index) => {
             el.classList.add('scroll-3d-reveal');
             el.style.transitionDelay = `${(index % 3) * 0.08}s`;
