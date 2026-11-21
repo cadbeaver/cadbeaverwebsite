@@ -208,6 +208,18 @@
             mouseY = 0;
         }, { passive: true });
 
+        let isScrolling = false;
+        let scrollTimer = null;
+        if (isMobileScreen) {
+            window.addEventListener('scroll', () => {
+                isScrolling = true;
+                if (scrollTimer) clearTimeout(scrollTimer);
+                scrollTimer = setTimeout(() => {
+                    isScrolling = false;
+                }, 70);
+            }, { passive: true });
+        }
+
         window.addEventListener('scroll', () => {
             targetScrollY = window.scrollY;
             if (window.scrollY > 400) {
@@ -223,6 +235,11 @@
         function animate() {
             if (!isHeroVisible) return;
             heroAnimId = requestAnimationFrame(animate);
+
+            // While thumb is actively scrolling on mobile, pause WebGL render to dedicate 100% GPU to 120fps kinetic scroll
+            if (isMobileScreen && isScrolling) {
+                return;
+            }
 
             // Smooth mouse & scroll inertia
             targetX += (mouseX - targetX) * 0.055;
@@ -754,6 +771,7 @@
             function animate() {
                 if (!isJellyVisible) return;
                 jellyAnimId = requestAnimationFrame(animate);
+                if (isMobileDevice && isScrolling) return;
                 time += 0.018;
 
                 ctx.clearRect(0, 0, width, height);

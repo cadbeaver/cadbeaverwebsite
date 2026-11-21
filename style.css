@@ -971,11 +971,11 @@
                 border: 1px solid rgba(0, 0, 0, 0.08) !important;
                 border-radius: 28px !important;
                 padding: 28px 22px !important;
-                box-shadow: 0 -4px 18px rgba(0, 0, 0, 0.08), 0 16px 36px rgba(0, 0, 0, 0.14) !important;
+                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08) !important;
                 opacity: 1 !important;
                 transform: none !important;
                 will-change: auto !important;
-                transition: box-shadow 0.25s ease !important;
+                transition: none !important;
             }
 
             .services-grid .service-card.card-dark {
@@ -2874,4 +2874,11 @@
                 width: 100%;
                 justify-content: center;
             }
+        }
+
+        /* Content Visibility Optimization for 120fps Kinetic Scrolling */
+        .case-studies-section,
+        .site-footer {
+            content-visibility: auto;
+            contain-intrinsic-size: 800px;
         }
