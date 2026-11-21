@@ -44,10 +44,6 @@
             -webkit-transform: translateZ(0);
         }
 
-        .hero-orbit-card {
-            contain: layout style paint;
-        }
-
         #three-canvas {
             transform: translateZ(0);
             -webkit-transform: translateZ(0);
