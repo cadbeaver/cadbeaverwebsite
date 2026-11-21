@@ -1,0 +1,27 @@
+# Dependencies
+node_modules/
+
+# Production output
+dist/
+dist.zip
+
+# Backups and scratches
+legacy_cards_backup/
+scratch/
+
+# Heavy raw assets in root (compressed production versions are kept in public/)
+/Gemini_Generated_Image_*.png
+/costom softwere_.mp4
+/mechanical design_.mp4
+/custom-software.mp4
+/mechanical-design.mp4
+/cards/
+/logo-original.png
+/logo with text.png
+
+# Logs and environment
+*.log
+.env
+.env.local
+.DS_Store
+Thumbs.db

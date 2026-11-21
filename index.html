@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚙️</text></svg>" />
+    <meta name="viewport" content="width=768, user-scalable=yes" />
+    <script>
+        (function() {
+            function syncViewport() {
+                var meta = document.querySelector('meta[name="viewport"]');
+                if (!meta) {
+                    meta = document.createElement('meta');
+                    meta.name = 'viewport';
+                    document.head.appendChild(meta);
+                }
+                var screenW = window.screen.width;
+                var innerW = window.innerWidth;
+                var effectiveW = (screenW > 0 && screenW < 768) ? screenW : (innerW > 0 && innerW < 768 ? innerW : 0);
+                if (effectiveW > 0) {
+                    var scale = Number((effectiveW / 768).toFixed(4));
+                    meta.setAttribute('content', 'width=768, initial-scale=' + scale + ', minimum-scale=' + scale + ', maximum-scale=3.0, user-scalable=yes');
+                } else if (screenW >= 768 || innerW >= 768) {
+                    meta.setAttribute('content', 'width=device-width, initial-scale=1.0');
+                }
+            }
+            syncViewport();
+            window.addEventListener('resize', syncViewport);
+            window.addEventListener('orientationchange', syncViewport);
+        })();
+    </script>
+    <title>Cadbeaver — Advanced Mechanical Design & Engineering Solutions</title>
+    <!-- Premium Google Fonts (Async Non-Blocking) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap"></noscript>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+</body>
+</html>
+
