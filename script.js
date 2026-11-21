@@ -178,8 +178,10 @@
             mouseY = Math.max(-0.5, Math.min(0.5, rawY));
         });
 
+        const isMobileScreen = window.innerWidth <= 968 || /Mobi|Android|iPhone/i.test(navigator.userAgent);
+
         window.addEventListener('touchmove', (e) => {
-            if (window.scrollY > 450) {
+            if (window.scrollY > 350) {
                 mouseX = 0;
                 mouseY = 0;
                 return;
@@ -187,8 +189,8 @@
             if (e.touches && e.touches[0]) {
                 const rawX = (e.touches[0].clientX / window.innerWidth) - 0.5;
                 const rawY = (e.touches[0].clientY / window.innerHeight) - 0.5;
-                mouseX = Math.max(-0.35, Math.min(0.35, rawX));
-                mouseY = Math.max(-0.25, Math.min(0.25, rawY));
+                mouseX = Math.max(-0.25, Math.min(0.25, rawX));
+                mouseY = Math.max(-0.15, Math.min(0.15, rawY));
             }
         }, { passive: true });
 
@@ -196,6 +198,18 @@
             mouseX = 0;
             mouseY = 0;
         }, { passive: true });
+
+        let isScrolling = false;
+        let scrollTimer = null;
+        if (isMobileScreen) {
+            window.addEventListener('scroll', () => {
+                isScrolling = true;
+                if (scrollTimer) clearTimeout(scrollTimer);
+                scrollTimer = setTimeout(() => {
+                    isScrolling = false;
+                }, 80);
+            }, { passive: true });
+        }
 
         window.addEventListener('scroll', () => {
             targetScrollY = window.scrollY;
@@ -207,11 +221,31 @@
 
         window.addEventListener('resize', updateCameraDistance);
 
+        // Video Playback Optimization - pause videos when off-screen to save mobile GPU/decoder
+        const allVideos = document.querySelectorAll('video');
+        if ('IntersectionObserver' in window && allVideos.length > 0) {
+            const vidObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.play().catch(() => {});
+                    } else {
+                        entry.target.pause();
+                    }
+                });
+            }, { threshold: 0.15 });
+            allVideos.forEach(v => vidObserver.observe(v));
+        }
+
         let isHeroVisible = true;
         let heroAnimId = null;
         function animate() {
             if (!isHeroVisible) return;
             heroAnimId = requestAnimationFrame(animate);
+
+            // While thumb is actively scrolling on mobile, pause WebGL scene calculation to dedicate 100% GPU to 120fps native kinetic scroll
+            if (isMobileScreen && isScrolling) {
+                return;
+            }
 
             // Smooth mouse & scroll inertia
             targetX += (mouseX - targetX) * 0.055;
@@ -525,8 +559,8 @@
             closeContactModal();
         }
 
-        // 5. SMOOTH 3D SCROLL REVEAL FOR CARDS & SECTIONS
-        const revealElements = document.querySelectorAll('.service-card, .project-card, .section-header, .contact-banner');
+        // 5. SMOOTH SCROLL REVEAL FOR CARDS & SECTIONS (GPU ACCELERATED)
+        const revealElements = document.querySelectorAll('.case-showcase-card, .service-card, .section-header, .contact-banner');
         revealElements.forEach((el, index) => {
             el.classList.add('scroll-3d-reveal');
             el.style.transitionDelay = `${(index % 3) * 0.08}s`;
@@ -539,8 +573,8 @@
                 }
             });
         }, {
-            threshold: 0.1,
-            rootMargin: '0px 0px -40px 0px'
+            threshold: 0.08,
+            rootMargin: '0px 0px -10px 0px'
         });
 
         revealElements.forEach(el => revealObserver.observe(el));
@@ -736,6 +770,7 @@
             function animate() {
                 if (!isJellyVisible) return;
                 jellyAnimId = requestAnimationFrame(animate);
+                if (isMobileScreen && isScrolling) return;
                 time += 0.018;
 
                 ctx.clearRect(0, 0, width, height);

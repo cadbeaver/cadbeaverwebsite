@@ -23,6 +23,11 @@
             -webkit-font-smoothing: antialiased;
         }
 
+        html {
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+        }
+
         html,
         body {
             background-color: var(--bg);
@@ -30,6 +35,10 @@
             overflow-x: clip;
             width: 100%;
             line-height: 1.5;
+        }
+
+        body {
+            touch-action: pan-y;
         }
 
         main {
@@ -952,8 +961,11 @@
                 padding: 28px 22px !important;
                 box-shadow: 0 -4px 18px rgba(0, 0, 0, 0.08), 0 16px 36px rgba(0, 0, 0, 0.14) !important;
                 opacity: 1 !important;
-                transform: none !important;
-                will-change: auto !important;
+                transform: translate3d(0, 0, 0) !important;
+                -webkit-transform: translate3d(0, 0, 0) !important;
+                will-change: transform !important;
+                backface-visibility: hidden !important;
+                -webkit-backface-visibility: hidden !important;
                 transition: box-shadow 0.25s ease !important;
             }
 
@@ -964,12 +976,12 @@
 
             .services-grid .service-card.scroll-3d-reveal {
                 opacity: 1 !important;
-                transform: none !important;
+                transform: translate3d(0, 0, 0) !important;
                 transition: none !important;
             }
 
             .services-grid .service-card:hover {
-                transform: none !important;
+                transform: translate3d(0, 0, 0) !important;
             }
 
             .services-grid .service-card:nth-child(1) { top: 76px !important; z-index: 10 !important; }
@@ -2005,31 +2017,36 @@
             }
         }
 
-        /* ---------------- SMOOTH 3D SCROLL REVEAL ---------------- */
+        /* ---------------- SMOOTH HARDWARE SCROLL REVEAL ---------------- */
         .scroll-3d-reveal {
             opacity: 0;
-            transform: perspective(1000px) rotateX(8deg) translateY(35px) scale(0.97);
-            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            transform: translate3d(0, 24px, 0);
+            transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
             will-change: opacity, transform;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
         }
 
         .scroll-3d-reveal.is-visible {
             opacity: 1;
-            transform: none;
+            transform: translate3d(0, 0, 0);
             will-change: auto;
         }
 
-        /* Smooth Card Hover Popup */
-        .service-card,
-        .project-card {
-            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease !important;
-            cursor: pointer;
-        }
+        /* Smooth Card Hover Popup (Desktop pointer only) */
+        @media (hover: hover) and (pointer: fine) {
+            .service-card,
+            .project-card,
+            .case-showcase-card {
+                transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease !important;
+                cursor: pointer;
+            }
 
-        .service-card:hover,
-        .project-card:hover {
-            transform: translateY(-8px) scale(1.015) !important;
-            box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.12) !important;
+            .service-card:hover,
+            .project-card:hover {
+                transform: translateY(-8px) scale(1.015) !important;
+                box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.12) !important;
+            }
         }
 
         /* Project Card Inspect Tag in #cases-slider */
