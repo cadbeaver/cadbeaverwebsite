@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚙️</text></svg>" />
-    <meta name="viewport" content="width=768, user-scalable=yes" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=768, user-scalable=yes">
     <script>
-        (function() {
+        (function () {
             function syncViewport() {
                 var meta = document.querySelector('meta[name="viewport"]');
                 if (!meta) {
@@ -29,16 +29,959 @@
         })();
     </script>
     <title>Cadbeaver — Advanced Mechanical Design & Engineering Solutions</title>
-    <!-- Premium Google Fonts (Async Non-Blocking) -->
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" media="print" onload="this.media='all'">
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap"></noscript>
-</head>
-<body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-</body>
-</html>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/lucide.min.js"></script>
 
+        <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <nav>
+        <a href="#" class="brand">
+            <img src="logo-beaver.png" alt="cadbeaver logo" class="brand-logo-img">
+            <span>cadbeaver</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="#hero">Overview</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#cases">Engineering Cases</a></li>
+        </ul>
+        <button class="nav-action-btn" onclick="openContactModal()">Contact Us</button>
+    </nav>
+
+    <section class="hero-container" id="hero">
+        <div class="hero-content-col">
+            <h1 class="hero-headline">Advanced Engineering,<br>Digital Systems &amp;<br>Manufacturing Solutions</h1>
+            <p class="hero-subtitle">From concept to production — Mechanical Design,<br>Custom Software and AI
+                Automation, all in one place.</p>
+            <div class="hero-cta-group">
+                <div class="hero-actions">
+                    <a href="#services" class="btn-pill btn-primary">
+                        <span>Explore Services</span>
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </a>
+                    <a href="#cases" class="btn-pill btn-secondary">
+                        <span>View Case Studies</span>
+                        <span class="play-btn-circle">
+                            <svg width="8" height="8" viewBox="0 0 24 24" fill="#000000" style="margin-left: 1px;">
+                                <polygon points="6 4 20 12 6 20 6 4"></polygon>
+                            </svg>
+                        </span>
+                    </a>
+                </div>
+                <div class="hero-services-pills-row">
+                    <div class="hero-srv-item">
+                        <div class="hero-srv-icon-wrap" title="Mechanical Design">
+                            <svg class="srv-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000"
+                                stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
+                                </path>
+                                <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                                <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                            </svg>
+                        </div>
+                        <div class="srv-label">
+                            <span>Mechanical</span>
+                            <span>Design</span>
+                        </div>
+                    </div>
+
+                    <div class="hero-srv-divider"></div>
+
+                    <div class="hero-srv-item">
+                        <div class="hero-srv-icon-wrap" title="Custom Software">
+                            <svg class="srv-icon srv-icon-code" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                stroke="#000000" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="8 6 2 12 8 18"></polyline>
+                                <polyline points="16 6 22 12 16 18"></polyline>
+                                <line x1="14" y1="4" x2="10" y2="20"></line>
+                            </svg>
+                        </div>
+                        <div class="srv-label">
+                            <span>Custom</span>
+                            <span>Software</span>
+                        </div>
+                    </div>
+
+                    <div class="hero-srv-divider"></div>
+
+                    <div class="hero-srv-item">
+                        <div class="hero-srv-icon-wrap" title="AI Automation">
+                            <svg class="srv-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000"
+                                stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="4" y="4" width="16" height="16" rx="2"></rect>
+                                <rect x="9" y="9" width="6" height="6"></rect>
+                                <line x1="9" y1="1" x2="9" y2="4"></line>
+                                <line x1="15" y1="1" x2="15" y2="4"></line>
+                                <line x1="9" y1="20" x2="9" y2="23"></line>
+                                <line x1="15" y1="20" x2="15" y2="23"></line>
+                                <line x1="20" y1="9" x2="23" y2="9"></line>
+                                <line x1="20" y1="14" x2="23" y2="14"></line>
+                                <line x1="1" y1="9" x2="4" y2="9"></line>
+                                <line x1="1" y1="14" x2="4" y2="14"></line>
+                            </svg>
+                        </div>
+                        <div class="srv-label">
+                            <span>AI</span>
+                            <span>Automation</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-canvas-wrap">
+            <canvas id="three-canvas"></canvas>
+            <div class="hero-cards-stage" id="hero-cards-stage">
+                <!-- 1. FEA / CFD SIMULATION (Aurora Frosted Glass + Squircle Button) -->
+                <div class="hero-orbit-card card-mech">
+                    <div class="card-img-wrap">
+                        <img src="cards/card_mech.webp" alt="FEA / CFD Simulation" class="card-png-img" decoding="async" fetchpriority="high" />
+                        <div class="card-overlay-info overlay-style-aurora">
+                            <div class="card-title">FEA / CFD Simulation</div>
+                            <div class="card-sub">Peak Stress 248 MPa</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. CONVEYOR SYSTEMS (Light Archives + Inner Document Sheet + 000 Badge) -->
+                <div class="hero-orbit-card card-software">
+                    <div class="card-img-wrap">
+                        <img src="cards/card_software.webp" alt="Conveyor Systems" class="card-png-img" decoding="async" fetchpriority="high" />
+                        <ul class="card-sheet-bullets">
+                            <li><span class="sheet-bullet-dot"></span>Screw Conveyor</li>
+                            <li><span class="sheet-bullet-dot"></span>Belt Conveyor</li>
+                            <li><span class="sheet-bullet-dot"></span>Pusher Feeder</li>
+                            <li><span class="sheet-bullet-dot"></span>Screw Feeder</li>
+                            <li><span class="sheet-bullet-dot"></span>Rotary Air Lock</li>
+                        </ul>
+                        <div class="card-overlay-info overlay-style-archives">
+                            <div class="card-title">Conveyor Systems</div>
+                            <div class="card-sub">Bulk Drive | SPM</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. LASER CUT & DXF (Scarlet Magma + Smoked Dark Glass) -->
+                <div class="hero-orbit-card card-laser">
+                    <div class="card-img-wrap">
+                        <img src="cards/card_laser.webp" alt="Laser Cut & DXF" class="card-png-img" decoding="async" />
+                        <div class="card-overlay-info overlay-style-dark">
+                            <div class="card-title">Laser Cut &amp; DXF</div>
+                            <div class="card-sub">1:1 Flat Pattern</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. AI AUTOMATION (Cosmic Royal Blue / Purple Magma) -->
+                <div class="hero-orbit-card card-ai">
+                    <div class="card-img-wrap">
+                        <img src="cards/card_ai.webp" alt="AI Automation" class="card-png-img" decoding="async" />
+                        <div class="card-overlay-info overlay-style-dark">
+                            <div class="card-title">AI Automation</div>
+                            <div class="card-sub">Neural Vision | 24/7</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5. CUSTOM SOFTWARE (Golden Bronze Magma) -->
+                <div class="hero-orbit-card card-conveyor">
+                    <div class="card-img-wrap">
+                        <img src="cards/card_conveyor.webp" alt="Custom Software" class="card-png-img" decoding="async" />
+                        <div class="card-overlay-info overlay-style-dark">
+                            <div class="card-title">Custom Software</div>
+                            <div class="card-sub">Cloud | API Core</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 6. MECHANICAL DESIGN (Dark Archives + Inner Sheet + 000 Badge) -->
+                <div class="hero-orbit-card card-sim">
+                    <div class="card-img-wrap">
+                        <img src="cards/card_sim.webp" alt="Mechanical Design" class="card-png-img" decoding="async" />
+                        <ul class="card-sheet-bullets card-sheet-bullets-grey">
+                            <li><span class="sheet-bullet-dot"></span>Machine &amp; SPM Design</li>
+                            <li><span class="sheet-bullet-dot"></span>Fabrication Drawings</li>
+                            <li><span class="sheet-bullet-dot"></span>Reverse Engineering</li>
+                            <li><span class="sheet-bullet-dot"></span>3D CAD Modeling</li>
+                        </ul>
+                        <div class="card-overlay-info overlay-style-dark">
+                            <div class="card-title">Mechanical Design</div>
+                            <div class="card-sub">GD&amp;T | DFM Prints</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 7. CNC / VMC PROGRAMMING (Emerald Mint Magma) -->
+                <div class="hero-orbit-card card-cnc">
+                    <div class="card-img-wrap">
+                        <img src="cards/card_cnc.webp" alt="CNC / VMC Programming" class="card-png-img" decoding="async" />
+                        <div class="card-overlay-info overlay-style-dark">
+                            <div class="card-title">CNC / VMC Programming</div>
+                            <div class="card-sub">5-Axis Toolpaths</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-stats-bar">
+            <div class="audio-stat-pill">
+                <div class="sound-bars">
+                    <div class="sound-bar"></div>
+                    <div class="sound-bar"></div>
+                    <div class="sound-bar"></div>
+                    <div class="sound-bar"></div>
+                    <div class="sound-bar"></div>
+                </div>
+                <div>
+                    <p style="font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--text-muted);">
+                        Engineering Metric</p>
+                    <p style="font-size: 14px; font-weight: 700;">Verified Calculations</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-wrap" id="services">
+        <div class="section-header">
+            <p
+                style="font-size: 13px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px;">
+                Our Capabilities</p>
+            <h2 class="section-title">Rigorous Engineering, Custom Software & Intelligent Automation</h2>
+        </div>
+
+        <div class="services-grid">
+
+            <div class="service-card card-col-8 card-dark" id="service-card-01">
+                <canvas class="antigravity-jelly-canvas" id="jelly-canvas-01"></canvas>
+                <div class="card-content-wrap">
+                    <div class="service-number">01 / DESIGN & DEVELOPMENT</div>
+                    <h3 class="service-name">Engineering Design & Development</h3>
+                    <p class="service-desc">From initial concepts to optimized mechanical systems, we develop practical
+                        and manufacturing-ready engineering solutions.</p>
+                </div>
+                <div class="service-tags card-content-wrap">
+                    <span class="service-tag">Mechanical Design</span>
+                    <span class="service-tag">Machine Design</span>
+                    <span class="service-tag">Product Development</span>
+                    <span class="service-tag">Concept & Design Development</span>
+                    <span class="service-tag">Design Optimization</span>
+                </div>
+            </div>
+
+            <div class="service-card card-col-4">
+                <div>
+                    <div class="service-number">02 / MODELING & DETAILING</div>
+                    <h3 class="service-name">Digital Modeling & Technical Drafting</h3>
+                    <p class="service-desc">Accurate digital models, detailed drawings and comprehensive solutions
+                        developed for demanding engineering and manufacturing requirements.</p>
+                </div>
+                <div class="service-tags">
+                    <span class="service-tag">3D Digital Modeling</span>
+                    <span class="service-tag">2D Drafting</span>
+                    <span class="service-tag">Detailing & Drawings</span>
+                    <span class="service-tag">Assembly Design</span>
+                    <span class="service-tag">Format Conversion</span>
+                    <span class="service-tag">Reverse Engineering</span>
+                </div>
+            </div>
+
+            <div class="service-card card-col-4">
+                <div>
+                    <div class="service-number">03 / TECHNICAL CALCULATIONS</div>
+                    <h3 class="service-name">Engineering & Technical Services</h3>
+                    <p class="service-desc">Engineering calculations and technical validation to support reliable,
+                        functional and application-focused designs.</p>
+                </div>
+                <div class="service-tags">
+                    <span class="service-tag">Shaft & Torque Calculations</span>
+                    <span class="service-tag">Power Transmission</span>
+                    <span class="service-tag">Bearing & Gearbox Selection</span>
+                    <span class="service-tag">Structural / Load Calculations</span>
+                    <span class="service-tag">Design Verification</span>
+                </div>
+            </div>
+
+            <div class="service-card card-col-8" id="service-04">
+                <div class="revenue-card-float card-stat-corner">
+                    <div class="label" id="dynamic-stat-label">MANUFACTURING EFFICIENCY</div>
+                    <div class="value" id="dynamic-stat">98.4% <svg width="14" height="14" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                            stroke-linejoin="round"
+                            style="display:inline-block; vertical-align:middle; margin-left: 4px;">
+                            <line x1="7" y1="17" x2="17" y2="7"></line>
+                            <polyline points="7 7 17 7 17 17"></polyline>
+                        </svg></div>
+                </div>
+                <div>
+                    <div class="service-number">04 / PRODUCTION READY</div>
+                    <h3 class="service-name">Manufacturing & Production Support</h3>
+                    <p class="service-desc">We bridge the gap between engineering design and manufacturing with
+                        production-ready documentation, precise tolerances and design support.</p>
+                </div>
+                <div class="service-tags">
+                    <span class="service-tag">Design for Manufacturing (DFM)</span>
+                    <span class="service-tag">Fabrication Drawings</span>
+                    <span class="service-tag">BOM Preparation</span>
+                    <span class="service-tag">Manufacturing Documentation</span>
+                    <span class="service-tag">Design Modification</span>
+                </div>
+            </div>
+
+            <div class="service-card card-col-6">
+                <div>
+                    <div class="service-number">05 / BULK HANDLING</div>
+                    <h3 class="service-name">Material Handling & Industrial Equipment</h3>
+                    <p class="service-desc">Application-focused design solutions for bulk material handling systems,
+                        industrial equipment and custom machinery.</p>
+                </div>
+                <div class="service-tags">
+                    <span class="service-tag">Screw Conveyor Design</span>
+                    <span class="service-tag">Belt Conveyor Systems</span>
+                    <span class="service-tag">Material Handling Equipment</span>
+                    <span class="service-tag">Custom Equipment Design</span>
+                </div>
+            </div>
+
+            <div class="service-card card-col-6 card-dark">
+                <div>
+                    <div class="service-number">06 / SPECIAL PURPOSE</div>
+                    <h3 class="service-name">Custom Engineering Solutions</h3>
+                    <p class="service-desc">Tailor-made machines, engineering retrofits, and equipment enhancements
+                        targeted directly at specific factory challenges.</p>
+                </div>
+                <div class="service-tags">
+                    <span class="service-tag">Custom Machine Design</span>
+                    <span class="service-tag">Special Purpose Machines (SPM)</span>
+                    <span class="service-tag">Engineering Modifications</span>
+                    <span class="service-tag">Existing Equipment Improvements</span>
+                    <span class="service-tag">Application-Specific Solutions</span>
+                </div>
+            </div>
+
+            <div class="service-card card-col-6">
+                <div>
+                    <div class="service-number">07 / CUSTOM SOFTWARE</div>
+                    <h3 class="service-name">Industrial Software & Process Dashboards</h3>
+                    <p class="service-desc">Purpose-built engineering tools including AutoDraw automation, AutoCosting software, and conveyor design data tools, alongside real-time telemetry dashboards and operational interfaces.</p>
+                </div>
+                <div class="service-tags">
+                    <span class="service-tag">AutoDraw Software</span>
+                    <span class="service-tag">AutoCosting Software</span>
+                    <span class="service-tag">Conveyor Design Data Software</span>
+                    <span class="service-tag">Industrial Dashboards</span>
+                    <span class="service-tag">Operational Telemetry</span>
+                    <span class="service-tag">Workflow Utilities</span>
+                </div>
+            </div>
+
+            <div class="service-card card-col-6 card-dark">
+                <div>
+                    <div class="service-number">08 / AI AUTOMATION</div>
+                    <h3 class="service-name">Intelligent Systems & Autonomous Logic</h3>
+                    <p class="service-desc">Algorithmic quality inspection, automated decision logic, workflow
+                        automation
+                        agents, and predictive operational monitoring for modern production.</p>
+                </div>
+                <div class="service-tags">
+                    <span class="service-tag">Vision Quality Inspection</span>
+                    <span class="service-tag">Autonomous Decision Logic</span>
+                    <span class="service-tag">Predictive Monitoring</span>
+                    <span class="service-tag">Anomaly Detection</span>
+                    <span class="service-tag">Smart Workflow Agents</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="case-studies-section" id="cases">
+        <div class="case-section-header">
+            <h2 class="case-title-huge">OUR CASES &amp; SOLUTIONS</h2>
+            <p class="case-section-sub">Real-world deployments across custom enterprise software and high-precision
+                mechanical systems.</p>
+        </div>
+
+        <div class="case-slider-wrapper">
+            <div class="case-slider-controls">
+                <div class="case-slider-dots">
+                    <button type="button" class="case-dot active" onclick="goToCaseSlide(0)" aria-label="Precision Mechanical Case"></button>
+                    <button type="button" class="case-dot" onclick="goToCaseSlide(1)" aria-label="Enterprise Software Case"></button>
+                </div>
+                <div class="case-slider-arrows">
+                    <button type="button" class="case-arrow-btn prev-btn" onclick="prevCaseSlide()" aria-label="Previous Case">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                    </button>
+                    <button type="button" class="case-arrow-btn next-btn" onclick="nextCaseSlide()" aria-label="Next Case">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </button>
+                </div>
+            </div>
+
+            <div class="case-showcase-container case-slider-track" id="case-slider-track">
+            <!-- SHOWCASE ROW 1: PRECISION MECHANICAL DESIGN & ENGINEERING -->
+            <div class="case-showcase-card" id="showcase-mechanical">
+                <div class="showcase-info-col">
+                    <div class="showcase-title-wrap">
+                        <h3 class="showcase-category-title">Precision Mechanical Design</h3>
+                        <div class="showcase-title-line"></div>
+                    </div>
+
+                    <!-- Interactive Horizontal Subcategory Tabs (Black & White Minimal Icons) -->
+                    <div class="showcase-tabs-nav" role="tablist">
+                        <button class="showcase-tab active" data-category="mechanical" data-tab="spm"
+                            onclick="switchShowcaseTab('mechanical', 'spm')">
+                            <span class="tab-icon">
+                                <svg class="tab-svg-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
+                                    <path
+                                        d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1Z" />
+                                </svg>
+                            </span>
+                            <span class="tab-label">SPM &amp; Machine Design</span>
+                        </button>
+                        <button class="showcase-tab" data-category="mechanical" data-tab="fea"
+                            onclick="switchShowcaseTab('mechanical', 'fea')">
+                            <span class="tab-icon">
+                                <svg class="tab-svg-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <polygon points="12 2 2 7 12 12 22 7 12 2" />
+                                    <polyline points="2 17 12 22 22 17" />
+                                    <polyline points="2 12 12 17 22 12" />
+                                </svg>
+                            </span>
+                            <span class="tab-label">FEA Simulation</span>
+                        </button>
+                        <button class="showcase-tab" data-category="mechanical" data-tab="dxf"
+                            onclick="switchShowcaseTab('mechanical', 'dxf')">
+                            <span class="tab-icon">
+                                <svg class="tab-svg-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path
+                                        d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z" />
+                                    <path d="m15 5 4 4" />
+                                </svg>
+                            </span>
+                            <span class="tab-label">DFM &amp; Laser Cut DXF</span>
+                        </button>
+                    </div>
+
+                    <!-- Dynamic Description Paragraph -->
+                    <p class="showcase-desc" id="mechanical-showcase-desc">
+                        From conceptual 3D kinematics to manufacturing-ready assemblies, we engineer robust Special
+                        Purpose Machines (SPM), dynamic torque systems, and high-precision automation mechanisms built
+                        for heavy-duty industrial cycles.
+                    </p>
+
+                    <div class="showcase-actions">
+                        <button class="btn-showcase-learn" id="mechanical-learn-btn"
+                            onclick="openProjectDetail('spm-machine')">
+                            <span>Learn more</span>
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M5 12h14"></path>
+                                <path d="m12 5 7 7-7 7"></path>
+                            </svg>
+                        </button>
+                        <span class="showcase-status-indicator">
+                            <span id="mechanical-status-text">ISO 2768-m Tolerancing</span>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Pure Clean Video Showcase Viewport -->
+                <div class="showcase-video-col">
+                    <div class="showcase-video-wrapper">
+                        <div class="video-media-stage">
+                            <video id="mechanical-video-player" class="case-video-element" autoplay loop muted
+                                playsinline preload="metadata">
+                                <source src="mechanical-design.mp4" type="video/mp4" />
+                                Your browser does not support HTML5 video.
+                            </video>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SHOWCASE ROW 2: ENTERPRISE SOFTWARE DEVELOPMENT -->
+            <div class="case-showcase-card" id="showcase-software">
+                <div class="showcase-info-col">
+                    <div class="showcase-title-wrap">
+                        <h3 class="showcase-category-title">Enterprise Software Development</h3>
+                        <div class="showcase-title-line"></div>
+                    </div>
+
+                    <!-- Interactive Horizontal Subcategory Tabs (Black & White Minimal Icons) -->
+                    <div class="showcase-tabs-nav" role="tablist">
+                        <button class="showcase-tab active" data-category="software" data-tab="ai"
+                            onclick="switchShowcaseTab('software', 'ai')">
+                            <span class="tab-icon">
+                                <svg class="tab-svg-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path
+                                        d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z" />
+                                </svg>
+                            </span>
+                            <span class="tab-label">Gen AI Services</span>
+                        </button>
+                        <button class="showcase-tab" data-category="software" data-tab="telemetry"
+                            onclick="switchShowcaseTab('software', 'telemetry')">
+                            <span class="tab-icon">
+                                <svg class="tab-svg-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                                    <circle cx="9" cy="7" r="4" />
+                                    <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+                                    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                                </svg>
+                            </span>
+                            <span class="tab-label">CRM Development</span>
+                        </button>
+                        <button class="showcase-tab" data-category="software" data-tab="erp"
+                            onclick="switchShowcaseTab('software', 'erp')">
+                            <span class="tab-icon">
+                                <svg class="tab-svg-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="10" />
+                                    <line x1="2" y1="12" x2="22" y2="12" />
+                                    <path
+                                        d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                                </svg>
+                            </span>
+                            <span class="tab-label">ERP Development</span>
+                        </button>
+                    </div>
+
+                    <!-- Dynamic Description Paragraph -->
+                    <p class="showcase-desc" id="software-showcase-desc">
+                        With advanced Generative AI and neural vision models, we help businesses automate
+                        mission-critical tasks, improve workflows, and make better decisions—faster.
+                    </p>
+
+                    <div class="showcase-actions">
+                        <button class="btn-showcase-learn" id="software-learn-btn"
+                            onclick="openProjectDetail('vision-scanner')">
+                            <span>Learn more</span>
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M5 12h14"></path>
+                                <path d="m12 5 7 7-7 7"></path>
+                            </svg>
+                        </button>
+                        <span class="showcase-status-indicator">
+                            <span id="software-status-text">Production Verified</span>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Pure Clean Video Showcase Viewport -->
+                <div class="showcase-video-col">
+                    <div class="showcase-video-wrapper">
+                        <div class="video-media-stage">
+                            <video id="software-video-player" class="case-video-element" autoplay loop muted playsinline
+                                preload="metadata">
+                                <source src="custom-software.mp4" type="video/mp4" />
+                                Your browser does not support HTML5 video.
+                            </video>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <footer id="contact">
+        <div class="contact-banner">
+            <h2 style="font-size: clamp(28px, 4vw, 44px); font-weight: 700; letter-spacing: -1px;">Let's Build Robust
+                Engineering & Smart Systems Together</h2>
+            <p style="color: var(--text-muted); max-width: 560px; font-size: 16px;">Get in touch with Cadbeaver for
+                mechanical machine design, custom industrial software, and intelligent AI automation.</p>
+            <button class="contact-btn-large" onclick="openContactModal()">
+                <span>Let's Get In Touch / Get a Quote</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M5 12h14" />
+                    <path d="m12 5 7 7-7 7" />
+                </svg>
+            </button>
+        </div>
+
+        <div class="site-footer-bottom">
+            <div class="footer-col">
+                <div class="brand" style="margin-bottom: 14px;">
+                    <img src="logo-beaver.png" alt="cadbeaver logo" class="brand-logo-img">
+                    <span>cadbeaver</span>
+                </div>
+                <p>Providing production-ready mechanical designs, custom industrial software, and intelligent automation
+                    systems.</p>
+            </div>
+
+            <div class="footer-col">
+                <h5>Navigation</h5>
+                <ul>
+                    <li><a href="#hero">Overview</a></li>
+                    <li><a href="#services">Capabilities</a></li>
+                    <li><a href="#cases">Our Cases</a></li>
+                    <li><a href="javascript:void(0)" onclick="openContactModal()">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h5>Key Services</h5>
+                <ul>
+                    <li><a href="#services">Mechanical Design & SPM</a></li>
+                    <li><a href="#services">Digital Modeling & Detailing</a></li>
+                    <li><a href="#services">Custom Industrial Software</a></li>
+                    <li><a href="#services">AI Automation & Vision Systems</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h5>Direct Reach</h5>
+                <ul>
+                    <li>
+                        <a href="tel:+919172411202">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path
+                                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                            </svg>
+                            <span>+91 9172411202</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="mailto:cadbeaverofficial@gmail.com">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <rect width="20" height="16" x="2" y="4" rx="2" />
+                                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                            </svg>
+                            <span>cadbeaverofficial@gmail.com</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://wa.me/919172411202?text=Hello%20Cadbeaver" target="_blank">
+                            <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z" />
+                            </svg>
+                            <span>WhatsApp</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.linkedin.com/company/cadbeaver" target="_blank">
+                            <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                            </svg>
+                            <span>LinkedIn</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-copyright-bar">
+            <span>&copy; 2026 Cadbeaver. All rights reserved.</span>
+            <span>Engineered for Reliability & Manufacturing Readiness</span>
+        </div>
+    </footer>
+
+    <div class="modal-overlay" id="contactModal">
+        <div class="modal-dialog">
+            <button class="modal-close-btn" onclick="closeContactModal()">&times;</button>
+
+            <h3 class="modal-title">Get a Quote / Contact Details</h3>
+            <p class="modal-subtitle">Direct channels & quick inquiry form for mechanical, software, or AI automation
+                requirements.
+            </p>
+
+            <div class="modal-direct-channels">
+                <a href="tel:+919172411202" class="channel-box">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path
+                            d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                    </svg>
+                    <span>Call: +91 9172411202</span>
+                </a>
+                <a href="https://wa.me/919172411202?text=Hello%20Cadbeaver,%20I%20want%20to%20request%20a%20quote."
+                    target="_blank" class="channel-box">
+                    <svg width="16" height="16" fill="#25D366" viewBox="0 0 24 24">
+                        <path
+                            d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z" />
+                    </svg>
+                    <span>WhatsApp Chat</span>
+                </a>
+            </div>
+
+            <form onsubmit="handleQuoteSubmit(event)">
+                <div class="form-group">
+                    <label>Name / Company</label>
+                    <input type="text" id="custName" placeholder="Your Name or Company" required>
+                </div>
+                <div class="form-group">
+                    <label>Contact Email / Phone</label>
+                    <input type="text" id="custContact" placeholder="email@example.com or Phone" required>
+                </div>
+                <div class="form-group">
+                    <label>Service Category</label>
+                    <select id="custService">
+                        <option value="01 — Engineering Design & Development">01 — Engineering Design & Development
+                        </option>
+                        <option value="02 — Digital Modeling & Technical Drafting">02 — Digital Modeling & Technical
+                            Drafting</option>
+                        <option value="03 — Engineering & Technical Services">03 — Engineering & Technical Services
+                        </option>
+                        <option value="04 — Manufacturing & Production Support">04 — Manufacturing & Production Support
+                        </option>
+                        <option value="05 — Material Handling & Industrial Equipment">05 — Material Handling &
+                            Industrial Equipment</option>
+                        <option value="06 — Custom Engineering Solutions">06 — Custom Engineering Solutions</option>
+                        <option value="07 — Custom Industrial Software & Dashboards">07 — Custom Industrial Software &
+                            Dashboards</option>
+                        <option value="08 — AI Automation & Intelligent Systems">08 — AI Automation & Intelligent
+                            Systems</option>
+                        <option value="09 — Full Turnkey Engineering (Mechanical + AI/Software)">09 — Full Turnkey
+                            Engineering (Mechanical + AI/Software)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Inquiry Message</label>
+                    <textarea id="custMsg" rows="3" placeholder="Briefly describe your requirements..."
+                        required></textarea>
+                </div>
+                <button type="submit" class="form-submit-btn">Send Inquiry directly to
+                    cadbeaverofficial@gmail.com</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ==================== AESTHETIC PROJECT DETAIL OVERLAY ==================== -->
+    <div class="project-modal-overlay" id="projectModal" aria-hidden="true">
+        <div class="project-modal-container">
+            <!-- Modal Header Bar -->
+            <div class="pm-header-bar">
+                <div class="pm-header-left">
+                    <span class="pm-category-pill" id="pm-badge">PRECISION KINEMATICS</span>
+                    <span class="pm-status-indicator"><span class="pm-pulse-dot"></span> LIVE SIMULATION READY</span>
+                </div>
+                <button class="pm-close-btn" onclick="closeProjectModal()" aria-label="Close Project Detail">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Modal Scrollable Content -->
+            <div class="pm-scroll-body">
+                <!-- Project Title & Quick Pitch -->
+                <div class="pm-hero-text">
+                    <h2 class="pm-title" id="pm-title">Rotary Drive Assembly</h2>
+                    <p class="pm-subtitle" id="pm-subtitle">Structural validation, bearing selection, and dynamic
+                        load-cycle optimization for heavy-duty industrial automation.</p>
+                </div>
+
+                <!-- SECTION 1: 4K HIGH-TECH SIMULATION VIEWPORT -->
+                <div class="pm-sim-card">
+                    <div class="pm-sim-hud-top">
+                        <div class="pm-hud-feed">
+                            <span class="pm-hud-tag">4K SIMULATION</span>
+                            <span class="pm-hud-fps" id="pm-hud-fps">60 FPS // KINEMATIC SOLVER</span>
+                        </div>
+                        <div class="pm-hud-telemetry" id="pm-hud-telemetry">
+                            <span>RPM: 1420</span>
+                            <span class="pm-hud-sep">|</span>
+                            <span>PEAK: 480 Nm</span>
+                            <span class="pm-hud-sep">|</span>
+                            <span>TOL: ±0.012mm</span>
+                        </div>
+                    </div>
+
+                    <!-- Canvas Viewport with Crosshairs and Grid -->
+                    <div class="pm-canvas-viewport">
+                        <canvas id="projectSimCanvas"></canvas>
+                        <div class="pm-viewport-grid"></div>
+                        <div class="pm-crosshair ch-top-left"></div>
+                        <div class="pm-crosshair ch-top-right"></div>
+                        <div class="pm-crosshair ch-bottom-left"></div>
+                        <div class="pm-crosshair ch-bottom-right"></div>
+                        <div class="pm-center-reticle"></div>
+                    </div>
+
+                    <!-- HUD Bottom Controls Bar -->
+                    <div class="pm-sim-hud-bottom">
+                        <div class="pm-sim-controls">
+                            <button class="pm-sim-btn" id="pmSimPlayBtn" onclick="toggleSimPlayback()">
+                                <svg id="pmPlayIcon" width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
+                                    <rect x="6" y="4" width="4" height="16" />
+                                    <rect x="14" y="4" width="4" height="16" />
+                                </svg>
+                                <span id="pmPlayLabel">PAUSE</span>
+                            </button>
+                            <button class="pm-sim-btn" onclick="toggleSimSpeed()">
+                                <span>SPEED: <strong id="pmSpeedVal">1.0x</strong></span>
+                            </button>
+                            <button class="pm-sim-btn" onclick="resetSimView()">
+                                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2.5">
+                                    <polyline points="1 4 1 10 7 10"></polyline>
+                                    <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path>
+                                </svg>
+                                <span>RE-CENTER</span>
+                            </button>
+                        </div>
+                        <div class="pm-sim-status-chip">
+                            <span class="pm-chip-dot"></span>
+                            <span id="pmSimStateText">CONVERGED // ZERO FLUTTER</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SECTION 2: CONCEPT 1 — THE ASSEMBLY & TECH PIPELINE -->
+                <div class="pm-section-block">
+                    <div class="pm-block-header">
+                        <div class="pm-block-badge">CONCEPT 01 // DELIVERY WORKFLOW</div>
+                        <h3 class="pm-block-title">The Assembly & Technology Pipeline</h3>
+                        <p class="pm-block-desc">How this project transitions from algorithmic mathematics to physical
+                            manufacturing and intelligent digital control.</p>
+                    </div>
+
+                    <div class="pm-pipeline-track" id="pm-pipeline-track">
+                        <!-- Populated dynamically: 4 stations -->
+                    </div>
+                </div>
+
+                <!-- SECTION 3: CONCEPT 2 — INTERACTIVE BEFORE VS AFTER SLIDER -->
+                <div class="pm-section-block">
+                    <div class="pm-block-header">
+                        <div class="pm-block-badge">CONCEPT 02 // PERFORMANCE BENCHMARK</div>
+                        <h3 class="pm-block-title">Legacy Traditional Method vs Cadbeaver Engineered Solution</h3>
+                        <p class="pm-block-desc">Drag the interactive slider to compare conventional workshop
+                            trial-and-error versus Cadbeaver parametric precision.</p>
+                    </div>
+
+                    <!-- Interactive Before/After Split Widget -->
+                    <div class="pm-ba-container" id="pmBaContainer">
+                        <!-- BEFORE PANEL (Underneath / Background) -->
+                        <div class="pm-ba-panel pm-ba-before" id="pmBaBefore">
+                            <div class="pm-ba-pill pill-before">LEGACY / UNOPTIMIZED METHOD</div>
+                            <div class="pm-ba-content">
+                                <h4 id="pm-before-title">Traditional Workshop Layout</h4>
+                                <p id="pm-before-desc">Empirical guess-fitting, unverified stress nodes, manual
+                                    alignment shims, and frequent rework delays during assembly commissioning.</p>
+                                <div class="pm-ba-tags" id="pm-before-tags">
+                                    <!-- Dynamic chips -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- AFTER PANEL (Clipped overlay) -->
+                        <div class="pm-ba-panel pm-ba-after" id="pmBaAfter">
+                            <div class="pm-ba-pill pill-after">CADBEAVER ENGINEERED SYSTEM</div>
+                            <div class="pm-ba-content">
+                                <h4 id="pm-after-title">Precision Turnkey Deployment</h4>
+                                <p id="pm-after-desc">Pre-validated finite element constraints, integrated digital
+                                    control logic, sub-millimeter GD&T tolerances, and zero-rework shopfloor execution.
+                                </p>
+                                <div class="pm-ba-tags" id="pm-after-tags">
+                                    <!-- Dynamic chips -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- DRAG HANDLE BAR -->
+                        <div class="pm-ba-handle" id="pmBaHandle">
+                            <div class="pm-ba-handle-line"></div>
+                            <div class="pm-ba-handle-button" title="Drag to compare">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="15 18 9 12 15 6"></polyline>
+                                </svg>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                                    style="margin-left:-8px">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                            </div>
+                            <div class="pm-ba-handle-line"></div>
+                        </div>
+                    </div>
+
+                    <!-- Delta Metric Summary Cards -->
+                    <div class="pm-delta-row" id="pm-delta-row">
+                        <!-- Populated dynamically -->
+                    </div>
+                </div>
+
+                <!-- SECTION 4: CONCEPT 3 — LIVE ENGINEERING SCOPE & SPECS MATRIX -->
+                <div class="pm-section-block">
+                    <div class="pm-block-header">
+                        <div class="pm-block-badge">CONCEPT 03 // TECHNICAL DOSSIER</div>
+                        <h3 class="pm-block-title">Engineering Scope & System Specifications</h3>
+                        <p class="pm-block-desc">Certified engineering criteria, material specifications, and physical
+                            deliverables included with this project package.</p>
+                    </div>
+
+                    <div class="pm-specs-grid" id="pm-specs-grid">
+                        <!-- Populated dynamically -->
+                    </div>
+
+                    <!-- Bottom Conversion Callout -->
+                    <div class="pm-action-banner">
+                        <div class="pm-action-text">
+                            <h4>Ready to engineer a solution of this caliber for your facility?</h4>
+                            <p>Consult with our lead engineering team. We deliver complete parametric 3D models,
+                                fabrication drawings, software controllers, and AI vision pipelines.</p>
+                        </div>
+                        <div class="pm-action-buttons">
+                            <button class="pm-btn-primary" onclick="inquireFromProject()">
+                                <span>Inquire for Similar Project</span>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2.2">
+                                    <path d="M5 12h14" />
+                                    <path d="m12 5 7 7-7 7" />
+                                </svg>
+                            </button>
+                            <a id="pm-whatsapp-link" href="#" target="_blank" class="pm-btn-whatsapp">
+                                <svg width="16" height="16" fill="#25D366" viewBox="0 0 24 24">
+                                    <path
+                                        d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z" />
+                                </svg>
+                                <span>WhatsApp Tech Lead</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+        <script src="script.js"></script>
+
+</body>
+
+</html>

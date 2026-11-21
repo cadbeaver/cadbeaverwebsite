@@ -121,8 +121,7 @@
             color: var(--text-main);
         }
 
-        .nav-action-btn,
-        .nav-contact-btn {
+        .nav-action-btn {
             background: #000000;
             color: #fff;
             padding: 10px 24px;
@@ -133,13 +132,9 @@
             transition: transform 0.2s, background 0.2s;
             border: none;
             cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
         }
 
-        .nav-action-btn:hover,
-        .nav-contact-btn:hover {
+        .nav-action-btn:hover {
             transform: translateY(-1px);
             background: #1a1a1a;
         }
@@ -559,6 +554,7 @@
         .overlay-style-archives .card-title {
             color: #0F172A;
         }
+
         .overlay-style-aurora .card-sub,
         .overlay-style-archives .card-sub {
             color: #64748B;
@@ -567,6 +563,7 @@
         .overlay-style-dark .card-title {
             color: #FFFFFF;
         }
+
         .overlay-style-dark .card-sub {
             color: rgba(255, 255, 255, 0.72);
         }
@@ -578,6 +575,7 @@
             z-index: 5;
             animation: floatMech 6.2s ease-in-out infinite;
         }
+
         .card-mech .folder-spec-dot {
             background: #38BDF8;
             box-shadow: 0 0 6px rgba(56, 189, 248, 0.7);
@@ -589,6 +587,7 @@
             z-index: 5;
             animation: floatSoftware 6.8s ease-in-out infinite 0.6s;
         }
+
         .card-software .folder-spec-dot {
             background: #F472B6;
             box-shadow: 0 0 6px rgba(244, 114, 182, 0.7);
@@ -600,6 +599,7 @@
             z-index: 8;
             animation: floatLaser 6.4s ease-in-out infinite 0.8s;
         }
+
         .card-laser .folder-spec-dot {
             background: #EF4444;
             box-shadow: 0 0 6px rgba(239, 68, 68, 0.7);
@@ -611,6 +611,7 @@
             z-index: 6;
             animation: floatAi 5.8s ease-in-out infinite 1.2s;
         }
+
         .card-ai .folder-spec-dot {
             background: #A855F7;
             box-shadow: 0 0 6px rgba(168, 85, 247, 0.7);
@@ -622,6 +623,7 @@
             z-index: 6;
             animation: floatConveyor 6.5s ease-in-out infinite 1.8s;
         }
+
         .card-conveyor .folder-spec-dot {
             background: #E2E8F0;
             box-shadow: 0 0 6px rgba(226, 232, 240, 0.7);
@@ -633,6 +635,7 @@
             z-index: 7;
             animation: floatSim 6.0s ease-in-out infinite 0.9s;
         }
+
         .card-sim .folder-spec-dot {
             background: #F59E0B;
             box-shadow: 0 0 6px rgba(245, 158, 11, 0.7);
@@ -644,6 +647,7 @@
             z-index: 7;
             animation: floatCnc 6.3s ease-in-out infinite 1.4s;
         }
+
         .card-cnc .folder-spec-dot {
             background: #10B981;
             box-shadow: 0 0 6px rgba(16, 185, 129, 0.7);
@@ -651,38 +655,87 @@
 
         /* Expressive Messy Float Keyframes ("Aadhe Tedhe" Dynamic Slants) */
         @keyframes floatMech {
-            0%, 100% { transform: translateY(0px) rotate(-7deg); }
-            50% { transform: translateY(-6px) rotate(-5.5deg); }
+
+            0%,
+            100% {
+                transform: translateY(0px) rotate(-7deg);
+            }
+
+            50% {
+                transform: translateY(-6px) rotate(-5.5deg);
+            }
         }
 
         @keyframes floatSoftware {
-            0%, 100% { transform: translateY(0px) rotate(6.5deg); }
-            50% { transform: translateY(-5px) rotate(7.5deg); }
+
+            0%,
+            100% {
+                transform: translateY(0px) rotate(6.5deg);
+            }
+
+            50% {
+                transform: translateY(-5px) rotate(7.5deg);
+            }
         }
 
         @keyframes floatLaser {
-            0%, 100% { transform: translateY(0px) rotate(-4deg); }
-            50% { transform: translateY(-6px) rotate(-2.5deg); }
+
+            0%,
+            100% {
+                transform: translateY(0px) rotate(-4deg);
+            }
+
+            50% {
+                transform: translateY(-6px) rotate(-2.5deg);
+            }
         }
 
         @keyframes floatAi {
-            0%, 100% { transform: translateY(0px) rotate(4.5deg); }
-            50% { transform: translateY(-5px) rotate(3deg); }
+
+            0%,
+            100% {
+                transform: translateY(0px) rotate(4.5deg);
+            }
+
+            50% {
+                transform: translateY(-5px) rotate(3deg);
+            }
         }
 
         @keyframes floatConveyor {
-            0%, 100% { transform: translateY(0px) rotate(-5deg); }
-            50% { transform: translateY(-5px) rotate(-3.5deg); }
+
+            0%,
+            100% {
+                transform: translateY(0px) rotate(-5deg);
+            }
+
+            50% {
+                transform: translateY(-5px) rotate(-3.5deg);
+            }
         }
 
         @keyframes floatSim {
-            0%, 100% { transform: translateY(0px) rotate(-6.5deg); }
-            50% { transform: translateY(-6px) rotate(-5deg); }
+
+            0%,
+            100% {
+                transform: translateY(0px) rotate(-6.5deg);
+            }
+
+            50% {
+                transform: translateY(-6px) rotate(-5deg);
+            }
         }
 
         @keyframes floatCnc {
-            0%, 100% { transform: translateY(0px) rotate(4.5deg); }
-            50% { transform: translateY(-5px) rotate(3deg); }
+
+            0%,
+            100% {
+                transform: translateY(0px) rotate(4.5deg);
+            }
+
+            50% {
+                transform: translateY(-5px) rotate(3deg);
+            }
         }
 
         /* Floating Stats Bar */
@@ -867,12 +920,15 @@
                 top: 24px !important;
                 right: 24px !important;
             }
+
             .card-stat-corner .label {
                 font-size: 8.5px !important;
             }
+
             .card-stat-corner .value {
                 font-size: 18px !important;
             }
+
             .card-stat-corner .value svg {
                 width: 12px !important;
                 height: 12px !important;
@@ -1486,7 +1542,7 @@
             background: #000000;
             border-radius: 24px;
             border: 1px solid rgba(0, 0, 0, 0.08);
-            box-shadow: 
+            box-shadow:
                 0 8px 20px rgba(0, 0, 0, 0.10),
                 0 2px 6px rgba(0, 0, 0, 0.06);
             overflow: hidden;
@@ -1546,24 +1602,6 @@
         .v-control-btn:hover {
             color: #FFFFFF;
             transform: scale(1.12);
-        }
-
-        /* Responsive Breakpoints */
-        @media (max-width: 991px) {
-            .case-studies-section {
-                padding: 60px 24px 90px;
-            }
-            .case-showcase-card {
-                grid-template-columns: 1fr;
-                gap: 32px;
-                padding: 30px 24px;
-            }
-            .case-showcase-container {
-                gap: 40px;
-            }
-            .showcase-desc {
-                min-height: auto;
-            }
         }
 
         /* Backward Compatibility for Horizontal Slider if needed */
@@ -2110,9 +2148,17 @@
         }
 
         @keyframes pmPulse {
-            0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
-            70% { box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+            0% {
+                box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+            }
+
+            70% {
+                box-shadow: 0 0 0 6px rgba(16, 185, 129, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+            }
         }
 
         .pm-close-btn {
@@ -2246,7 +2292,7 @@
         .pm-viewport-grid {
             position: absolute;
             inset: 0;
-            background-image: 
+            background-image:
                 linear-gradient(to right, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
                 linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
             background-size: 30px 30px;
@@ -2260,10 +2306,34 @@
             border-color: rgba(255, 255, 255, 0.25);
             pointer-events: none;
         }
-        .ch-top-left { top: 14px; left: 14px; border-top: 1.5px solid; border-left: 1.5px solid; }
-        .ch-top-right { top: 14px; right: 14px; border-top: 1.5px solid; border-right: 1.5px solid; }
-        .ch-bottom-left { bottom: 14px; left: 14px; border-bottom: 1.5px solid; border-left: 1.5px solid; }
-        .ch-bottom-right { bottom: 14px; right: 14px; border-bottom: 1.5px solid; border-right: 1.5px solid; }
+
+        .ch-top-left {
+            top: 14px;
+            left: 14px;
+            border-top: 1.5px solid;
+            border-left: 1.5px solid;
+        }
+
+        .ch-top-right {
+            top: 14px;
+            right: 14px;
+            border-top: 1.5px solid;
+            border-right: 1.5px solid;
+        }
+
+        .ch-bottom-left {
+            bottom: 14px;
+            left: 14px;
+            border-bottom: 1.5px solid;
+            border-left: 1.5px solid;
+        }
+
+        .ch-bottom-right {
+            bottom: 14px;
+            right: 14px;
+            border-bottom: 1.5px solid;
+            border-right: 1.5px solid;
+        }
 
         .pm-center-reticle {
             position: absolute;
@@ -2722,6 +2792,7 @@
             .pm-pipeline-track {
                 grid-template-columns: repeat(2, 1fr);
             }
+
             .pm-delta-row {
                 grid-template-columns: repeat(2, 1fr);
             }
@@ -2731,39 +2802,50 @@
             .project-modal-overlay {
                 padding: 12px;
             }
+
             .project-modal-container {
                 max-height: 96vh;
                 border-radius: 20px;
             }
+
             .pm-header-bar {
                 padding: 16px 20px;
             }
+
             .pm-scroll-body {
                 padding: 20px 20px 32px;
                 gap: 26px;
             }
+
             .pm-canvas-viewport {
                 height: 260px;
             }
+
             .pm-pipeline-track {
                 grid-template-columns: 1fr;
             }
+
             .pm-delta-row {
                 grid-template-columns: 1fr 1fr;
             }
+
             .pm-specs-grid {
                 grid-template-columns: 1fr;
             }
+
             .pm-action-banner {
                 flex-direction: column;
                 align-items: flex-start;
                 padding: 22px;
             }
+
             .pm-action-buttons {
                 width: 100%;
                 flex-direction: column;
             }
-            .pm-btn-primary, .pm-btn-whatsapp {
+
+            .pm-btn-primary,
+            .pm-btn-whatsapp {
                 width: 100%;
                 justify-content: center;
             }
