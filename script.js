@@ -772,8 +772,10 @@
 
             let isJellyVisible = true;
             let jellyAnimId = null;
+            let isCardCovered = false;
+
             function animate() {
-                if (!isJellyVisible) return;
+                if (!isJellyVisible || isCardCovered) return;
                 jellyAnimId = requestAnimationFrame(animate);
                 if (isMobileDevice && isScrolling) return;
                 time += 0.018;
@@ -891,13 +893,44 @@
                 const next = entry.isIntersecting;
                 if (next && !isJellyVisible) {
                     isJellyVisible = true;
-                    jellyAnimId = requestAnimationFrame(animate);
+                    if (!isCardCovered && !jellyAnimId) jellyAnimId = requestAnimationFrame(animate);
                 } else if (!next) {
                     isJellyVisible = false;
-                    if (jellyAnimId) cancelAnimationFrame(jellyAnimId);
+                    if (jellyAnimId) {
+                        cancelAnimationFrame(jellyAnimId);
+                        jellyAnimId = null;
+                    }
                 }
             }, { threshold: 0.02 });
             jellyObserver.observe(canvas);
+
+            // Hardware Occlusion: When Card 2 slides over Card 1 on mobile, pause Card 1's 2D canvas completely
+            const allServiceCards = document.querySelectorAll('.services-grid .service-card');
+            const card2 = allServiceCards[1];
+            if (card2 && isMobileDevice) {
+                const checkOcclusion = () => {
+                    const r2 = card2.getBoundingClientRect();
+                    // When Card 2 reaches the sticky header area (top <= 90px), Card 1 is fully occluded
+                    if (r2.top <= 90 && r2.bottom > 0) {
+                        if (!isCardCovered) {
+                            isCardCovered = true;
+                            if (jellyAnimId) {
+                                cancelAnimationFrame(jellyAnimId);
+                                jellyAnimId = null;
+                            }
+                        }
+                    } else if (r2.top > 90) {
+                        if (isCardCovered) {
+                            isCardCovered = false;
+                            if (isJellyVisible && !jellyAnimId) {
+                                jellyAnimId = requestAnimationFrame(animate);
+                            }
+                        }
+                    }
+                };
+                window.addEventListener('scroll', checkOcclusion, { passive: true });
+            }
+
             animate();
         }
 

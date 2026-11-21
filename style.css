@@ -955,54 +955,79 @@
                 height: 12px !important;
             }
 
-            /* Mobile Capabilities Stacking Deck (Taash ke Patte Scroll Effect) - Ultra-Smooth 120Hz */
+            /* Mobile Capabilities Stacking Deck (Taash ke Patte Scroll Effect) - Ultra-Smooth Apple 120Hz */
             .services-grid {
                 display: block !important;
                 position: relative !important;
-                padding-bottom: 180px !important;
+                padding-top: 10px !important;
+                padding-bottom: 90px !important;
+                touch-action: pan-y !important;
+                -webkit-overflow-scrolling: touch !important;
             }
 
             .services-grid .service-card {
                 position: -webkit-sticky !important;
                 position: sticky !important;
+                top: 76px !important;
+                min-height: 390px !important;
+                display: flex !important;
+                flex-direction: column !important;
+                justify-content: space-between !important;
                 background: #FFFFFF !important;
                 border: 1px solid rgba(0, 0, 0, 0.08) !important;
-                border-radius: 28px !important;
-                padding: 28px 22px !important;
-                margin-bottom: 24px !important;
-                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06) !important;
+                border-radius: 26px !important;
+                padding: 26px 20px !important;
+                margin-bottom: 110px !important;
+                box-shadow: 0 -3px 18px rgba(0, 0, 0, 0.05), 0 8px 24px rgba(0, 0, 0, 0.07) !important;
                 opacity: 1 !important;
-                transform: translateZ(0) !important;
-                -webkit-transform: translateZ(0) !important;
+                transform: translate3d(0, 0, 0) !important;
+                -webkit-transform: translate3d(0, 0, 0) !important;
                 will-change: transform !important;
                 contain: paint layout !important;
+                content-visibility: auto;
+                contain-intrinsic-size: 390px;
+                backface-visibility: hidden !important;
+                -webkit-backface-visibility: hidden !important;
+                isolation: isolate !important;
                 transition: none !important;
                 -webkit-transition: none !important;
             }
 
+            .services-grid .service-card:last-child {
+                margin-bottom: 24px !important;
+            }
+
             .services-grid .service-card.card-dark {
                 background: #000000 !important;
-                border-color: rgba(255, 255, 255, 0.1) !important;
+                border: 1px solid rgba(255, 255, 255, 0.12) !important;
+                box-shadow: 0 -4px 22px rgba(0, 0, 0, 0.45), 0 12px 30px rgba(0, 0, 0, 0.55) !important;
             }
 
             .services-grid .service-card.scroll-3d-reveal {
                 opacity: 1 !important;
-                transform: translateZ(0) !important;
+                transform: translate3d(0, 0, 0) !important;
                 transition: none !important;
             }
 
             .services-grid .service-card:hover {
-                transform: translateZ(0) !important;
+                transform: translate3d(0, 0, 0) !important;
             }
 
             .services-grid .service-card:nth-child(1) { top: 76px !important; z-index: 10 !important; }
-            .services-grid .service-card:nth-child(2) { top: 90px !important; z-index: 11 !important; }
-            .services-grid .service-card:nth-child(3) { top: 104px !important; z-index: 12 !important; }
-            .services-grid .service-card:nth-child(4) { top: 118px !important; z-index: 13 !important; }
-            .services-grid .service-card:nth-child(5) { top: 132px !important; z-index: 14 !important; }
-            .services-grid .service-card:nth-child(6) { top: 146px !important; z-index: 15 !important; }
-            .services-grid .service-card:nth-child(7) { top: 160px !important; z-index: 16 !important; }
-            .services-grid .service-card:nth-child(8) { top: 174px !important; z-index: 17 !important; }
+            .services-grid .service-card:nth-child(2) { top: 76px !important; z-index: 11 !important; }
+            .services-grid .service-card:nth-child(3) { top: 76px !important; z-index: 12 !important; }
+            .services-grid .service-card:nth-child(4) { top: 76px !important; z-index: 13 !important; }
+            .services-grid .service-card:nth-child(5) { top: 76px !important; z-index: 14 !important; }
+            .services-grid .service-card:nth-child(6) { top: 76px !important; z-index: 15 !important; }
+            .services-grid .service-card:nth-child(7) { top: 76px !important; z-index: 16 !important; }
+            .services-grid .service-card:nth-child(8) { top: 76px !important; z-index: 17 !important; }
+
+            .revenue-card-float.slide-out .label,
+            .revenue-card-float.slide-out .value,
+            .revenue-card-float.slide-in-prep .label,
+            .revenue-card-float.slide-in-prep .value {
+                filter: none !important;
+            }
         }
 
         .stepper-dots {
