@@ -5,9 +5,15 @@
 
         const camera = new THREE.PerspectiveCamera(45, canvas.clientWidth / canvas.clientHeight, 0.1, 1000);
 
-        const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
+        const isMobileScreen = window.innerWidth <= 968 || /Mobi|Android|iPhone/i.test(navigator.userAgent);
+        const renderer = new THREE.WebGLRenderer({
+            canvas: canvas,
+            alpha: true,
+            antialias: !isMobileScreen,
+            powerPreference: 'high-performance'
+        });
         renderer.setSize(canvas.clientWidth, canvas.clientHeight);
-        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        renderer.setPixelRatio(isMobileScreen ? 1.0 : Math.min(window.devicePixelRatio, 2));
 
         // High-end ambient & studio lighting
         const ambientLight = new THREE.AmbientLight(0xffffff, 1.8);
@@ -47,6 +53,21 @@
             renderer.setSize(parent.clientWidth, parent.clientHeight);
         }
         updateCameraDistance();
+
+        // Video Playback Optimization - pause videos when off-screen to save mobile GPU/decoder
+        const allVideos = document.querySelectorAll('video');
+        if ('IntersectionObserver' in window && allVideos.length > 0) {
+            const vidObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.play().catch(() => {});
+                    } else {
+                        entry.target.pause();
+                    }
+                });
+            }, { threshold: 0.15 });
+            allVideos.forEach(v => vidObserver.observe(v));
+        }
 
         // Function to create smooth 3D elliptical wireframe orbit rings
         function createOrbitRing(radiusX, radiusY, colorHex, opacity, isDashed) {
@@ -179,17 +200,7 @@
         });
 
         window.addEventListener('touchmove', (e) => {
-            if (window.scrollY > 450) {
-                mouseX = 0;
-                mouseY = 0;
-                return;
-            }
-            if (e.touches && e.touches[0]) {
-                const rawX = (e.touches[0].clientX / window.innerWidth) - 0.5;
-                const rawY = (e.touches[0].clientY / window.innerHeight) - 0.5;
-                mouseX = Math.max(-0.35, Math.min(0.35, rawX));
-                mouseY = Math.max(-0.25, Math.min(0.25, rawY));
-            }
+            // Keep native mobile vertical touch scrolling 100% unimpeded
         }, { passive: true });
 
         window.addEventListener('touchend', () => {
@@ -234,14 +245,20 @@
             orbitGroup.rotation.z = -0.25 + orbitDeltaZ;
             orbitGroup.rotation.x = 0.52 + orbitDeltaX;
 
-            // Sync CSS 3D cards stage tilt smoothly with mouse - strictly clamped
-            // Pitch (rotateX) strictly capped between -5deg and +5deg, yaw (rotateY) between -7deg and +7deg
+            // Sync CSS 3D cards stage tilt smoothly with mouse on desktop
+            // On mobile, keep locked in optimal 3D perspective to prevent per-frame DOM reflows
             if (cardsStage) {
-                const rotX = Math.max(-5, Math.min(5, targetY * -7));
-                const rotY = Math.max(-7, Math.min(7, targetX * 9));
                 const isMobile = window.innerWidth <= 968;
-                const baseScale = isMobile ? 'scale(0.88) translateY(14px) ' : '';
-                cardsStage.style.transform = `perspective(1400px) ${baseScale}rotateX(${rotX}deg) rotateY(${rotY}deg)`;
+                if (isMobile) {
+                    if (!cardsStage.dataset.mobileFixed) {
+                        cardsStage.style.transform = 'perspective(1400px) scale(0.88) translateY(14px)';
+                        cardsStage.dataset.mobileFixed = 'true';
+                    }
+                } else {
+                    const rotX = Math.max(-5, Math.min(5, targetY * -7));
+                    const rotY = Math.max(-7, Math.min(7, targetX * 9));
+                    cardsStage.style.transform = `perspective(1400px) rotateX(${rotX}deg) rotateY(${rotY}deg)`;
+                }
             }
 
             renderer.render(scene, camera);
@@ -602,14 +619,15 @@
 
             const ctx = canvas.getContext('2d');
             let width = 0, height = 0;
-            const dpr = Math.min(window.devicePixelRatio || 1, 2);
+            const isMobileDevice = window.innerWidth <= 968;
+            const dpr = isMobileDevice ? 1.0 : Math.min(window.devicePixelRatio || 1, 2);
 
             // Single uniform Google Blue color for all particles
             const PARTICLE_BLUE = '#4D82F3'; // Vibrant Google Antigravity Blue
 
             let particles = [];
             let cx = 0, cy = 0, radius = 0;
-            const minDistance = 25; // Strict spacing: particles never stick or crowd
+            const minDistance = isMobileDevice ? 30 : 25; // Strict spacing: particles never stick or crowd
 
             function buildParticles() {
                 particles = [];
