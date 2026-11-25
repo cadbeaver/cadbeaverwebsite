@@ -1,0 +1,60 @@
+# Cadbeaver
+
+> Rigorous Mechanical Engineering Design, Custom Industrial Machinery, Production-Ready CAD & Intelligent Engineering Automation.
+
+Cadbeaver (https://cadbeaver.com) is an engineering consultancy that bridges digital CAD modeling with factory-floor manufacturing. We engineer production-ready mechanical systems, parametric 3D CAD assemblies, Special Purpose Machines (SPM), bulk material handling equipment, and proprietary industrial software tools.
+
+## Core Engineering Capabilities
+
+1. **Engineering Design & Development**:
+   - Mechanical & machine design from initial concept to shop-floor manufacturing readiness.
+   - Mechanism synthesis, torque & stress balancing, kinematic motion verification.
+   - Industrial product development and structural design optimization.
+
+2. **Digital Modeling & Technical Drafting**:
+   - Parametric 3D CAD digital modeling (SolidWorks, Inventor, Creo, NX, Fusion 360).
+   - High-precision 2D drafting with full GD&T (Geometric Dimensioning & Tolerancing, ASME Y14.5).
+   - Complete fabrication drawings, sub-assembly prints, BOM (Bill of Materials), and CAD format migration (STEP, IGES, DXF, DWG).
+   - 3D laser-scan reverse engineering and legacy drawing modernization.
+
+3. **Engineering & Technical Services (Calculations & Simulation)**:
+   - Shaft sizing, continuous and peak torque capacity, dynamic balancing calculations.
+   - Power transmission selection (gearboxes, motors, timing belts, roller chains).
+   - Bearing fatigue life rating (L10h rating calculations), structural deflection, and FEA/CFD validation.
+
+4. **Manufacturing & Production Support (DFM)**:
+   - Design for Manufacturing (DFM) and Design for Assembly (DFA).
+   - 98.4% verified manufacturing efficiency with zero shop-floor rework flow.
+   - CNC/VMC programming coordination, laser-cutting sheet metal flat patterns with bend deductions, and weldment detailing.
+
+5. **Material Handling & Industrial Equipment**:
+   - Continuous screw conveyors (progressive pitch feed, abrasive bulk transport).
+   - Trough and pipe screw conveyors, belt conveyor systems, bucket elevators, and hopper discharge chutes.
+   - Heavy industrial bulk material handling equipment design.
+
+6. **Custom Engineering Solutions (Special Purpose Machines - SPM)**:
+   - Custom automated assembly fixtures, multi-axis transfer gantries, pneumatic and hydraulic machinery.
+   - Factory equipment retrofits, throughput capacity enhancements, and plant maintenance re-engineering.
+
+7. **Industrial Software & Process Dashboards**:
+   - Automated drawing generation tools (AutoDraw software).
+   - Custom machine costing calculators (AutoCosting software).
+   - Conveyor design calculation utilities and microsecond telemetry dashboards.
+
+8. **AI Automation & Intelligent Systems**:
+   - Sub-millimeter automated optical vision inspection and defect classification.
+   - Algorithmic decision logic, production cycle analytics, and automated reporting.
+
+## Key Projects & Technical Telemetry
+- **High-Torque Rotary Drive System**: 1,420 RPM, zero-backlash planetary-cycloidal transmission. Peak torque rating: 2,400 Nm (3,600 RPM).
+- **Heavy-Duty Continuous Screw Conveyor**: 85 RPM shaft, progressive pitch bulk transport with wear-resistant Hardox flighting.
+- **Precision Automated SPM Workstation**: 1,200 parts/hr multi-axis synchronized assembly workstation with sub-second parts transfer.
+- **Heavy Industrial Turbine Drive Shaft**: 3,600 RPM rated, non-linear torsional stress redistribution.
+
+## Contact & Consultation
+- **Website**: https://cadbeaver.com
+- **Direct Phone / WhatsApp**: +91 9172411202
+- **Direct WhatsApp Link**: https://wa.me/919172411202
+- **Email**: cadbeaverofficial@gmail.com
+- **LinkedIn**: https://www.linkedin.com/company/cadbeaver
+- **Location**: India (Serving engineering clients globally)
