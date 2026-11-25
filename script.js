@@ -555,7 +555,7 @@
                 `Regards,\n${name}`
             );
 
-            window.location.href = `mailto:cadbeaverofficial@gmail.com?subject=${subject}&body=${body}`;
+            window.location.href = `mailto:hello@cadbeaver.com?subject=${subject}&body=${body}`;
             closeContactModal();
         }
 
